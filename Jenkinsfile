@@ -66,7 +66,8 @@ podTemplate(
         stage("Deploy"){
                 echo 'Iniciando  Deploy com Helm'
                 echo "Namespace ${KUBE_NAMESPACE}"
-                sh 'ls -ltra'   
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'rafaelnascdev-github2', url: 'https://github.com/RKRafaelNascimento/chart']]])
+                sh "helm install . ${KUBE_NAMESPACE}-${IMAGE_NAME} -n ${KUBE_NAMESPACE}"
         }
     }
 }
