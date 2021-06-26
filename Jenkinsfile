@@ -66,12 +66,7 @@ podTemplate(
         stage("Deploy"){
                 echo 'Iniciando  Deploy com Helm'
                 echo "Namespace ${KUBE_NAMESPACE}"
-                sh 'ls -ltra'
-                try {
-
-                } catch(Expection e) {
-                     echo "Namespace ${KUBE_NAMESPACE}"
-                }
+                sh 'ls -ltra'   
         }
     }
 }
